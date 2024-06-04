@@ -26,5 +26,4 @@ jobs:
           repository: ${{ secrets.repository }}
           image: image
           branch: master
-          folder: Docker
-          dockerfile: ../Dockerfile
+          dockerfile: ./Docker/Dockerfile
