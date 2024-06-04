@@ -41,7 +41,5 @@ jobs:
           containerAppName: test
           resourceGroup: rg-application-storelink-nonprd
           imageToBuild: acrstorelink9696.azurecr.io/test:${{ github.sha }}
-          _buildArgumentsKey_: |
-            _buildArgumentsValues_
 
 
