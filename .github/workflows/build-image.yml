@@ -28,6 +28,9 @@ jobs:
           branch: master
           dockerfile: ./Docker/Dockerfile
 
+      - name: Checkout code2
+        uses: actions/checkout@v2
+
       - name: Login to Azure2
         uses: azure/login@v2
         with:
