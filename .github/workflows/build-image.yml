@@ -28,15 +28,15 @@ jobs:
           branch: master
           dockerfile: ./Docker/Dockerfile
 
-      # - name: Login to Azure2
-      #   uses: azure/login@v2
-      #   with:
-      #     creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Login to Azure2
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # - name: Deploy Image to Container App
-      #   uses: azure/container-apps-deploy-action@v1
-      #   with:
-      #     acrName: acrstorelink9696
-      #     containerAppName: test
-      #     resourceGroup: rg-application-storelink-nonprd
-      #     imageToDeploy: acrstorelink9696.azurecr.io/app:v2.1
+      - name: Deploy Image to Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          acrName: acrstorelink9696
+          containerAppName: test
+          resourceGroup: rg-application-storelink-nonprd
+          imageToDeploy: acrstorelink9696.azurecr.io/app:latest
