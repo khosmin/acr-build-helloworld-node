@@ -27,4 +27,4 @@ jobs:
           image: image
           branch: master
           folder: ./Docker
-          dockerfile: ./Docker/Dockerfile
+          dockerfile: ../Dockerfile
