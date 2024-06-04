@@ -19,8 +19,10 @@ jobs:
         id: acr
         uses: azure/acr-build@v1
         with:
-          registry-name: acrstorelink9696 # Replace with your Azure Container Registry name
-          image-name: myapp
-          image-tag: latest
-          build-arguments: |
-            --build-arg ARG_NAME=ARG_VALUE # Add any build arguments here
+          service_principal: ${{ secrets.service_principal }}
+          service_principal_password: ${{ secrets.service_principal_password }}
+          tenant: ${{ secrets.tenant }}
+          registry: ${{ secrets.registry }}
+          repository: ${{ secrets.repository }}
+          image: image
+          branch: master
