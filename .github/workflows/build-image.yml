@@ -25,6 +25,7 @@ jobs:
           registry: ${{ secrets.registry }}
           repository: ${{ secrets.repository }}
           image: image
+          tag: v2
           branch: master
           dockerfile: ./Docker/Dockerfile
 
@@ -34,4 +35,4 @@ jobs:
           acrName: acrstorelink9696
           containerAppName: test
           resourceGroup: rg-application-storelink-nonprd
-          imageToDeploy: acrstorelink9696.azurecr.io/app:${{ github.sha }}
+          imageToDeploy: acrstorelink9696.azurecr.io/app:$v2
