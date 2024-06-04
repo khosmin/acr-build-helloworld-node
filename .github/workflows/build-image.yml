@@ -1,0 +1,28 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    paths:
+      - '*' # Specify the path to your Dockerfile
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Build and push Docker image
+        id: acr
+        uses: azure/acr-build@v1
+        with:
+          registry-name: acrstorelink9696 # Replace with your Azure Container Registry name
+          image-name: myapp
+          image-tag: latest
+          build-arguments: |
+            --build-arg ARG_NAME=ARG_VALUE # Add any build arguments here
