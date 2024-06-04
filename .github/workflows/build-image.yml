@@ -27,3 +27,11 @@ jobs:
           image: image
           branch: master
           dockerfile: ./Docker/Dockerfile
+
+      - name: Deploy Image to Container App
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          acrName: acrstorelink9696
+          containerAppName: test
+          resourceGroup: rg-application-storelink-nonprd
+          imageToDeploy: acrstorelink9696.azurecr.io/app:${{ github.sha }}
