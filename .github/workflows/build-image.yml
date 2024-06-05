@@ -5,6 +5,7 @@ on:
 
 jobs:
   build:
+    name: 'Build'
     runs-on: ubuntu-latest
 
     steps:
@@ -26,15 +27,15 @@ jobs:
           repository: ${{ secrets.repository }}
           image: image
           branch: master
-          dockerfile: ./Docker/Dockerfile
 
-      - name: Checkout code2
+  deploy:
+    name: 'Deployment'
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Login to Azure2
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy Image to Container App
         uses: azure/container-apps-deploy-action@v1
