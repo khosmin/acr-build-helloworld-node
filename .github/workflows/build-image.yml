@@ -46,7 +46,7 @@ jobs:
       - name: Deploy Image to Container App
         uses: azure/container-apps-deploy-action@v1
         with:
-          acrName: acrstorelink9696
-          containerAppName: test
-          resourceGroup: rg-application-storelink-nonprd
-          imageToDeploy: acrstorelink9696.azurecr.io/app:latest
+          acrName: acr12b0aa02
+          containerAppName: nginx
+          resourceGroup: example-container-app-7b9ea612651c6d2d
+          imageToDeploy: acr12b0aa02.azurecr.io/app:latest
