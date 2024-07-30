@@ -27,25 +27,3 @@ jobs:
           registry: ${{ secrets.registry }}
           repository: ${{ secrets.repository }}
           branch: master
-
-  deploy:
-    name: 'Deployment'
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Deploy Image to Container App
-        uses: azure/container-apps-deploy-action@v1
-        with:
-          acrName: acr12b0aa02
-          containerAppName: nginx
-          resourceGroup: example-container-app-7b9ea612651c6d2d
-          imageToDeploy: acr12b0aa02.azurecr.io/app:latest
