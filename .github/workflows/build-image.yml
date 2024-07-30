@@ -24,6 +24,28 @@ jobs:
           service_principal: ${{ secrets.service_principal }}
           service_principal_password: ${{ secrets.service_principal_password }}
           tenant: ${{ secrets.tenant }}
-          registry: acrstorelink9696
+          registry: ${{ secrets.registry }}
           repository: ${{ secrets.repository }}
           branch: master
+
+  deploy:
+    name: 'Deployment'
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Image to Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          acrName: acrstorelink9696
+          containerAppName: java
+          resourceGroup: example-container-app-332978ae4c09d092
+          imageToDeploy: acrstorelink9696.azurecr.io/app:latest
